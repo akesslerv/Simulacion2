@@ -15,7 +15,7 @@ clave = '12345'
 
 # Conf directorio y tiempo limite para seleccion la copia de archivos
 directorio_path = 'home/Desktop/EquipoB'
-time_limit = datetime.datetime.now() - datetime.timedelta(days=7)
+time_limit = datetime.datetime.now() - datetime.timedelta(days=5)
 
 # Lugar de destino y nombre de archivo comprimido en equipo A
 local_path = '/Desktop/Local Path'
@@ -32,8 +32,8 @@ if __name__ == '__main__':
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect(host, port=22,  username=usuario, password=clave)
 
-        stand_input, stand_output, stand_error = client.exec_command('ls')
-        time.sleep(2)
+        stand_input, stand_output, stand_error = client.exec_command('ls /')
+        time.sleep(1)
 
         resultado = stand_output.read().decode()
         print(resultado)
